@@ -1,0 +1,37 @@
+#!/bin/bash
+#
+# bag-describe
+#
+# Takes a BagIt bag and describes all of its files using PREMIS records, which
+# are then inserted into a "premis" folder inside the bag.
+#
+# You need to have a local instance of the DAITSS Description service web
+# application (https://github.com/daitss/describe) running on the local
+# machine. If it is running somewhere else on the network, change the
+# DESCRIBE_URL variable below.
+#
+# Usage:
+#     ./bag-describe <BAG>
+#
+# Once you've used this script, you will want to update the tag manifests for
+# the bag. Here's how to do it using the official Java-based bag utility:
+#
+#     bag updatetagmanifests <BAG>
+
+DESCRIBE_URL=http://localhost:3000
+BAG=$1
+
+# Verify that the Description Service is responding to requests
+STATUS=`curl -s -o /dev/null -I -w "%{http_code}" "$DESCRIBE_URL"`
+if [ "$STATUS" -ne "200" ]; then
+	echo "A local instance of the Description Service is not reachable. Are you sure it is running?"
+	exit 1
+fi
+
+# Go through all the files in the bag's "data" directory and call the Description Service
+cd $BAG/data
+find . -type f | while read line; do
+	mkdir -p "$BAG/premis/`dirname "$line"`"
+	EXT=${line##*.}
+	curl -F "document=@$line" -F "extension=$EXT" $DESCRIBE_URL/description > "$BAG/premis/$line.xml"
+done
