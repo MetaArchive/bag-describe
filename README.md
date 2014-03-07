@@ -41,7 +41,8 @@ the `JAVA_HOME` environment variable is set to the path where it is located.)
 3.  `cd describe-2.4.0`
 4.  `rvm use 1.8.7`
 5.  `bundle install` (you may run into issues here depending on your platform; 
-    refer to the README.md file in the current directory for more information)
+    refer to the README.md file in the `describe-2.4.0` directory for more information
+    on setting up the Format Description Service if needed)
 6.  `export DAITSS_CONFIG=daitss-config.example.yml`
 7.  `export VIRTUAL_HOSTNAME=describe.example.org`
 8.  `bundle exec thin start`
