@@ -37,12 +37,12 @@ the `JAVA_HOME` environment variable is set to the path where it is located.)
 1.  Open a Linux/Mac command line and `cd` into the directory where you want 
     the description service to reside. (Inside of this directory is fine if
     you're not sure.)
-2.  `curl -L https://github.com/daitss/describe/archive/v2.4.0.tar.gz | tar zx`
-3.  `cd describe-2.4.0`
-4.  `rvm use 1.8.7`
+2.  `curl -L https://github.com/daitss/describe/archive/5035ef1a9a4dd0aea1eedc3f4ad5e8a619974b95.tar.gz | tar zx`
+3.  `cd describe-5035ef1a9a4dd0aea1eedc3f4ad5e8a619974b95`
+4.  `rvm use 1.9.3`
 5.  `bundle install` (you may run into issues here depending on your platform; 
-    refer to the README.md file in the `describe-2.4.0` directory for more information
-    on setting up the Format Description Service if needed)
+    refer to the README.md file in the `describe-5035...` directory for more 
+    information on setting up the Format Description Service if needed)
 6.  `export DAITSS_CONFIG=daitss-config.example.yml`
 7.  `export VIRTUAL_HOSTNAME=describe.example.org`
 8.  `bundle exec thin start`
