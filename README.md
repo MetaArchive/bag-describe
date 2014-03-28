@@ -59,7 +59,7 @@ to the actual URL and port of your Description Service instance.
 
 Then simply run
 
-    ./describe-bag path/to/your/bag
+    ./bag-describe path/to/your/bag
 
 to start the process. The resulting PREMIS records will be created in a new
 directory inside your bag's root called `premis`.
