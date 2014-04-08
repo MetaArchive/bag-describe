@@ -48,7 +48,7 @@ the `JAVA_HOME` environment variable is set to the path where it is located.)
 8.  `bundle exec thin start`
 
 
-## Using the bag-describe script
+## Using the bag-describe shell script
 
 If needed, edit the `bag-describe` file in this directory using a text editor
 and change the location specified on the line that reads
@@ -64,6 +64,25 @@ Then simply run
 to start the process. The resulting PREMIS records will be created in a new
 directory inside your bag's root called `premis`.
 
+
+# Using the bag-describe.py Python script
+
+The Python script can be invoked as a standalone script with the following 
+arguments:
+
+* The URL to the description service
+* The path to the bag
+
+For example:
+
+    python bag-describe.py http://localhost:3000 path/to/your/bag
+
+Note: The bag-describe.py module can also be imported into other scripts or 
+applications. For example:
+
+    from bag-describe import bag-describe
+    ...
+    bag_describe(description_url, bag_path)
 
 ## License
 
