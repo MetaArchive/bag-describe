@@ -32,6 +32,5 @@ fi
 cd $BAG/data
 find . -type f | while read line; do
 	mkdir -p "$BAG/premis/`dirname "$line"`"
-	EXT=${line##*.}
-	curl -F "document=@$line" -F "extension=$EXT" $DESCRIBE_URL/description > "$BAG/premis/$line.xml"
+	curl -F "file=@$line" $DESCRIBE_URL/description > "$BAG/premis/$line.xml"
 done
