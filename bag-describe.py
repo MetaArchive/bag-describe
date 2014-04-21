@@ -29,7 +29,7 @@ def bag_describe(url, bag_path):
         raise Exception("Bag path contains no bagit.txt file: %s" % bag_path)
 
     # Verify description service is reachable
-    if urllib2.urlopen(url).getcode() is not 200:
+    if urllib2.urlopen(url).getcode() != 200:
         raise Exception(
             "Description service not reachable at given URL: %s" % url
         )
@@ -46,13 +46,15 @@ def bag_describe(url, bag_path):
                 with open(os.path.join(current_dir, filename+'.xml'), 'w') as premis:
                     premis.write(r.text)
 
+
 def _make_arg_parser():
     parser = argparse.ArgumentParser(
-        description="Describe a BagIt bag using the DAITSS Format " \
+        description="Describe a BagIt bag using the DAITSS Format "
                     "Description Service."
     )
-    parser.add_argument('url',
-        help="URL of running instance of DAITSS Format Description Service " \
+    parser.add_argument(
+        'url',
+        help="URL of running instance of DAITSS Format Description Service "
              "(e.g. 'http://localhost:3000')"
     )
     parser.add_argument('bag', help="path to the bag being surveyed")
