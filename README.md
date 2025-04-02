@@ -1,4 +1,4 @@
-# bag-describe
+# [Archived] bag-describe
 
 A simple shell script that generates file format description data for all
 files in a BagIt bag.
